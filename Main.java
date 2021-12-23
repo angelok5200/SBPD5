@@ -44,8 +44,9 @@ public class Main {
     }
 
     private static keys proverkadecryption(keys key) {
-        BigInteger res = BigInteger.valueOf(key.getS().intValue()).pow(key.getE().intValue()).mod(key.getN());
-        BigInteger temp = BigInteger.valueOf(key.getS().intValue()).pow(key.getE().intValue());
+        BigInteger res = key.getS().pow(key.getE().intValue()).mod(key.getN());
+        int e = key.getE().intValue();
+
         if (res.equals(key.getM())) {
             System.out.print("correct signature:  ");
         }
@@ -122,7 +123,7 @@ class keys {
         return d;
     }
     public BigInteger getS() {
-        return d;
+        return s;
     }
     public void setS(BigInteger s) {
         this.s = s;
